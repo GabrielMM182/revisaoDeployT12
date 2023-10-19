@@ -53,7 +53,7 @@ const login = async (req, res) => {
       return res.status(400).json({ mensagem: "email ou senha invalido" });
     }
 
-    const token = jwt.sign({ id: usuario.id }, secretJwt, { expiresIn: "8h" });
+    const token = jwt.sign({ id: usuario.id }, process.env.JWT_PASS, { expiresIn: "8h" });
 
     return res.json({
       usuario,
